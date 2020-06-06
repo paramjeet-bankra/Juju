@@ -1,7 +1,8 @@
-# Juju
+# Juju+
 
+<img src="image/main_icon_500.png" width=300/>
 
-*Read this in other languages: [English](README.md), [한국어](README.ko.md), [português](README.pt_br.md).*
+EDUtainment for Juniors, a moderated video sharing platform for the children, by the children!
 
 ## Contents
 
@@ -46,23 +47,15 @@ The lockdown has given a lot of time to children to get bored. There is **no fun
 
 ## Demo video
 
-[![Watch the video](https://github.com/Code-and-Response/Liquid-Prep/blob/master/images/IBM-interview-video-image.png)](https://youtu.be/vOgCOoy_Bx0)
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/MUQfKFzIOeU" 
+frameborder="0" 
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen></iframe>
 
-## The architecture
+## Project overview
 
-![Architecture](architecture.png)
-
-1.  The user downloads the app and opens it.
-2.  User can signup as student or as a mentor and login to the platform.
-3.  Student can
-    1.  watch videos uploaded by students around the world
-    2.  comment on the videos (uploaded by themselves or others)
-    3 create new videos and send them to mentors for approval 
-4.  Mentor can 
-    1.  approve/reject the videos posted by students they are mentors to
-    2.  watch the videos uploaded by students across the world
-5.  The app stores the uploaded videos within Object Storage.
-
+A few slides explaining the app in detail here: [Slides](https://docs.google.com/presentation/d/1YKWAuzix023t4VB09DJjb6bCT0Z4GGobfxXMQFkWW6o/edit?usp=sharing)
 
 ## Project roadmap
 
@@ -75,6 +68,22 @@ Download apk from live demo section, install it on your Android device. Open Juj
 ![Login/Profile](image/Post_login_flow_and_profile.png)
 
 ![Creating/Posting](image/Creating_and_posting_content.png)
+
+
+## The architecture
+
+![Architecture](image/architecture.png)
+
+1.  The user downloads the app and opens it.
+2.  User can signup as student or as a mentor and login to the platform.
+3.  Student can
+    1.  watch videos uploaded by students around the world
+    2.  comment on the videos (uploaded by themselves or others)
+    3 create new videos and send them to mentors for approval 
+4.  Mentor can 
+    1.  approve/reject the videos posted by students they are mentors to
+    2.  watch the videos uploaded by students across the world
+5.  The app stores the uploaded videos within Object Storage.
 
 
 ## Live demo
@@ -94,9 +103,9 @@ Download apk from live demo section, install it on your Android device. Open Juj
 ## Authors
 
 * **Paramjeet Kaur Bankra** - *Initial work* (https://https://github.com/paramjeet-bankra/Juju)
-* **Sarina Dhamija** - *Initial work* https://https://github.com/paramjeet-bankra/Juju))
-* **Chitra Gupta** - *Initial work* https://https://github.com/paramjeet-bankra/Juju))
-* **Prachi Shrivastava** - *Initial work* https://https://github.com/paramjeet-bankra/Juju))
+* **Sarina Dhamija** - *Initial work* (https://https://github.com/paramjeet-bankra/Juju)
+* **Chitra Gupta** - *Initial work* (https://https://github.com/paramjeet-bankra/Juju)
+* **Prachi Shrivastava** - *Initial work* (https://https://github.com/paramjeet-bankra/Juju)
 
 ## License
 
