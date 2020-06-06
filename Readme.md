@@ -34,8 +34,7 @@ The lockdown has given a lot of time to children to get bored. There is **no fun
 
 ### The idea
 
-1.  Involving teachers as moderators, 
-1.  children currently studying in schools as content creators, and all children as viewers in an engaging video sharing platform
+1.  Involving teachers as moderators, children currently studying in schools as content creators, and all children as viewers in an engaging video sharing platform
 1.  Kids have to login, create a profile and select their interest areas. We have 6 interest areas as of now: Science, Maths, English, General Knowledge, Art and Talent. They can watch videos that have been uploaded by kids across the globe. They can also record their very own 45 second videos.
 1.  Teachers login as mentors and can moderate (approve or reject) videos of kids from their own schools
 1.  Kids send their videos to their mentors. Once approved, videos will be posted on Juju+ so that the entire world can enjoy them!
@@ -74,7 +73,7 @@ Download apk from live demo section, install it on your Android device. Open Juj
 3.  Student can
     1.  watch videos uploaded by students around the world
     2.  comment on the videos (uploaded by themselves or others)
-    3 create new videos and send them to mentors for approval 
+    3.  create new videos and send them to mentors for approval 
 4.  Mentor can 
     1.  approve/reject the videos posted by students they are mentors to
     2.  watch the videos uploaded by students across the world
