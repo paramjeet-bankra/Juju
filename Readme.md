@@ -15,7 +15,6 @@ EDUtainment for Juniors, a moderated video sharing platform for the children, by
 1. [Live demo](#live-demo)
 1. [Built with](#built-with)
 1. [Authors](#authors)
-1. [License](#license)
 1. [Acknowledgments](#acknowledgments)
 
 ## Short description
@@ -95,14 +94,10 @@ Download apk from live demo section, install it on your Android device. Open Juj
 
 ## Authors
 
-* **Paramjeet Kaur Bankra** - *Initial work* (https://https://github.com/paramjeet-bankra/Juju)
-* **Sarina Dhamija** - *Initial work* (https://https://github.com/paramjeet-bankra/Juju)
-* **Chitra Gupta** - *Initial work* (https://https://github.com/paramjeet-bankra/Juju)
-* **Prachi Shrivastava** - *Initial work* (https://https://github.com/paramjeet-bankra/Juju)
-
-## License
-
-This project is licensed under the IBM
+* **Paramjeet Kaur Bankra** - *Initial work* (https://github.com/paramjeet-bankra/Juju)
+* **Sarina Dhamija** - *Initial work* (https://github.com/paramjeet-bankra/Juju)
+* **Chitra Gupta** - *Initial work* (https://github.com/paramjeet-bankra/Juju)
+* **Prachi Shrivastava** - *Initial work* (https://github.com/paramjeet-bankra/Juju)
 
 ## Acknowledgments
 
