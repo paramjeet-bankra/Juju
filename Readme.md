@@ -81,7 +81,7 @@ Download apk from live demo section, install it on your Android device. Open Juj
 
 ## Live demo
 
-* You can find a running system to test at [callforcode.mybluemix.net](http://callforcode.mybluemix.net/)
+* Download android [apk](https://github.com/paramjeet-bankra/Juju/blob/master/AndroidAppData/JujuPlusApp.apk)
 
 
 ## Built with
@@ -91,6 +91,7 @@ Download apk from live demo section, install it on your Android device. Open Juj
 * [IBM ElephantSQL](https://cloud.ibm.com/catalog/services/elephantsql) - sql database to store user details and their videos details
 * [NodeJs](https://nodejs.org/en/docs/) - Server side framework
 * [IBM Cloud Object strorage](https://cloud.ibm.com/catalog?search=cloud%20object%20storage#search_results) - Used to store user videos
+* [Kotlin](https://kotlinlang.org/docs/tutorials/getting-started.html) - used for creating android app
 
 ## Authors
 
