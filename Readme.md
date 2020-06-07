@@ -100,6 +100,7 @@ Download apk from live demo section, install it on your Android device. Open Juj
 * **Sarina Dhamija** - *Initial work* (https://github.com/paramjeet-bankra/Juju)
 * **Chitra Gupta** - *Initial work* (https://github.com/paramjeet-bankra/Juju)
 * **Prachi Shrivastava** - *Initial work* (https://github.com/paramjeet-bankra/Juju)
+* **Swadha Handa** - *Initial work* (https://github.com/paramjeet-bankra/Juju)
 
 ## Acknowledgments
 
