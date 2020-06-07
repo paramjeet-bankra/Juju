@@ -91,7 +91,8 @@ Download apk from live demo section, install it on your Android device. Open Juj
 * [IBM ElephantSQL](https://cloud.ibm.com/catalog/services/elephantsql) - sql database to store user details and their videos details
 * [NodeJs](https://nodejs.org/en/docs/) - Server side framework
 * [IBM Cloud Object strorage](https://cloud.ibm.com/catalog?search=cloud%20object%20storage#search_results) - Used to store user videos
-* [Kotlin](https://kotlinlang.org/docs/tutorials/getting-started.html) - used for creating android app
+* [Kotlin](https://developer.android.com/kotlin/get-started) - used for creating Android app
+* [MVVM](https://www.journaldev.com/20292/android-mvvm-design-pattern) - an Android framework
 
 ## Authors
 
