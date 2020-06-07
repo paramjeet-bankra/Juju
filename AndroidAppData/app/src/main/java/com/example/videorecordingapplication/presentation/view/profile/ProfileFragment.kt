@@ -17,6 +17,7 @@ import com.example.videorecordingapplication.data.entity.SampleVideoData
 import com.example.videorecordingapplication.data.entity.VideoEntity
 import com.example.videorecordingapplication.data.entity.VideoListEntity
 import com.example.videorecordingapplication.data.localdatasource.DataSource
+import com.example.videorecordingapplication.data.localdatasource.UserData
 import com.example.videorecordingapplication.presentation.view.recommendation.RecommendationGridAdapter
 import com.example.videorecordingapplication.presentation.view.search.HorizontalListAdapter
 import com.example.videorecordingapplication.presentation.view.search.SearchViewModel
@@ -31,7 +32,10 @@ class ProfileFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupViewModel()
-        viewModel.fetchVideoList(1)
+        if (UserData.type == "student")
+            viewModel.fetchVideoList(UserData.studentId)
+        else
+            viewModel.fetchVideoList(UserData.mentorId)
     }
 
     override fun onCreateView(

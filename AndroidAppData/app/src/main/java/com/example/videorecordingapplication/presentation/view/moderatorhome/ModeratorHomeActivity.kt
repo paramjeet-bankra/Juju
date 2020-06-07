@@ -75,14 +75,14 @@ class ModeratorHomeActivity : AppCompatActivity(), ModeratorHomeAdapter.DialogSe
     override fun onTickClick(videoId : Int?) {
         videoId?.apply {
             viewModel.approve(videoId)
-            fragmentContainer.visibility == View.GONE
+            fragmentContainer.visibility = View.GONE
         }
     }
 
     override fun onCrossClick(videoId : Int?) {
         videoId?.apply {
             viewModel.reject(videoId)
-            fragmentContainer.visibility == View.GONE
+            fragmentContainer.visibility = View.GONE
         }
     }
 

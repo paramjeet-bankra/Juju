@@ -12,6 +12,6 @@ interface VideoListRepository {
     fun getUserVideos(userVideosRequest: UserVideosRequest) : Observable<Response<ArrayList<VideoEntity>>>
     fun getFilteredVideos(filterRequest: FilterRequest) : Observable<Response<ArrayList<VideoListEntity>>>
     fun getAllVideos() : Observable<Response<ArrayList<VideoListEntity>>>
-    fun uploadData(desc: RequestBody, multipart : MultipartBody.Part) : Observable<Response<UploadResponse>>
+    fun uploadData(key:String,desc: RequestBody, multipart : MultipartBody.Part) : Observable<Response<UploadResponse>>
     fun uploadDataToServer(request : VideoDataUpdateRequest) : Observable<Response<SignUpResponse>>
 }

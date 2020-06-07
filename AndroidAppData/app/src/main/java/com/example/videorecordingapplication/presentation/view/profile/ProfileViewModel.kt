@@ -13,6 +13,7 @@ import com.example.videorecordingapplication.data.entity.VideoListEntity
 import com.example.videorecordingapplication.data.entity.request.FilterRequest
 import com.example.videorecordingapplication.data.entity.request.UserVideosRequest
 import com.example.videorecordingapplication.data.localdatasource.DataSource
+import com.example.videorecordingapplication.data.localdatasource.UserData
 import com.example.videorecordingapplication.data.repository.RecommendationRepositoryImpl
 import com.example.videorecordingapplication.data.repository.VideoListRepositoryImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -62,6 +63,9 @@ class ProfileViewModel : ViewModel(){
 
         private fun onResponse(response: ArrayList<VideoEntity>) {
             Log.d(DataSource.LOG_TAG, "Video list Response successful")
+
+            if (UserData.videoList.size > 0)
+                response.addAll(UserData.videoList)
 
             updateVideoList(response)
         }

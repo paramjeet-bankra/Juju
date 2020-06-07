@@ -1,6 +1,7 @@
 package com.example.videorecordingapplication.data.remotedatasource
 
 import com.example.videorecordingapplication.data.client.ApiServiceClient
+import com.example.videorecordingapplication.data.client.UploadApiServiceClient
 import com.example.videorecordingapplication.data.entity.CategoryData
 import com.example.videorecordingapplication.data.entity.Response
 import com.example.videorecordingapplication.data.entity.SchoolEntity
@@ -14,7 +15,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiService {
     val service : ApiServiceClient
+    val uploadService : UploadApiServiceClient
+
     var baseUrl = "https://f60a7503.eu-gb.apigw.appdomain.cloud/"
+    var uploadUrl = "https://witpixies.s3.ap.cloud-object-storage.appdomain.cloud/"
 
     init {
         val logging = HttpLoggingInterceptor()
@@ -34,6 +38,15 @@ class ApiService {
             .client(httpClient.build())
             .build()
 
+        val uploadRetrofit = Retrofit.Builder()
+            .baseUrl(uploadUrl)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .client(httpClient.build())
+            .build()
+
         service = retrofit.create<ApiServiceClient>(ApiServiceClient::class.java)
+
+        uploadService = uploadRetrofit.create<UploadApiServiceClient>(UploadApiServiceClient::class.java)
     }
 }

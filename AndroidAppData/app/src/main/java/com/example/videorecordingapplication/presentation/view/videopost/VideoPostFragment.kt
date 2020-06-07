@@ -26,14 +26,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.videorecordingapplication.BuildConfig
 import com.example.videorecordingapplication.R
 import com.example.videorecordingapplication.data.entity.SchoolEntity
+import com.example.videorecordingapplication.data.entity.VideoDataUpdateRequest
+import com.example.videorecordingapplication.data.entity.VideoEntity
 import com.example.videorecordingapplication.data.localdatasource.DataSource
+import com.example.videorecordingapplication.data.localdatasource.UserData
 import com.example.videorecordingapplication.presentation.view.GlideApp
 import com.example.videorecordingapplication.presentation.view.profile.ProfileFragment
 import com.example.videorecordingapplication.presentation.view.signup.SchoolListAdapter
+import com.google.gson.annotations.SerializedName
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
+import kotlin.random.Random
 
 class VideoPostFragment : Fragment(), SchoolListAdapter.OnItemClickListener {
     lateinit var ivProfile: AppCompatImageView
@@ -47,8 +52,7 @@ class VideoPostFragment : Fragment(), SchoolListAdapter.OnItemClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-setupViewModel()
-
+        setupViewModel()
     }
 
     private fun setupViewModel() {
@@ -112,7 +116,20 @@ setupViewModel()
         btnSendToMentor.setOnClickListener {
             Toast.makeText(requireContext(), "Video Uploading started", Toast.LENGTH_SHORT).show()
            // getMultipartData("Video", arguments?.getString("url"))
-            getMultipartData("Image", viewModel.localImageUrl)
+            //getMultipartData("Image", viewModel.localImageUrl)
+
+            UserData.videoList.add(
+                VideoEntity(UserData.age,
+                    etCaption.text.toString(),
+                    arguments?.getString("url")!!,
+                    UserData.mentorId,
+                    UserData.mentorName,
+            "pending",
+                    UserData.studentId,
+                    UserData.name,
+                    viewModel.localImageUrl!!,
+                    etCaption.text.toString(),
+                    UserData.counter+1))
 
             requireActivity().supportFragmentManager
                 .beginTransaction()
@@ -206,7 +223,7 @@ setupViewModel()
 
             val map = HashMap<String, RequestBody>();
             map.put("key", toRequestBody("${name_prefix}${System.currentTimeMillis()}"))
-            viewModel.uploadData(body, description)
+            viewModel.uploadData("${name_prefix}${System.currentTimeMillis()}",body, description)
         }
     }
 

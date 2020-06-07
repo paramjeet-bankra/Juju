@@ -36,11 +36,11 @@ class VideoListRepositoryImpl : VideoListRepository{
         return ApiService().service.getAllVideos()
     }
 
-    override fun uploadData(desc : RequestBody, multipart : MultipartBody.Part): Observable<Response<UploadResponse>> {
-        return ApiService().service.uploadData(desc, multipart)
+    override fun uploadData(key : String,desc : RequestBody, multipart : MultipartBody.Part): Observable<Response<UploadResponse>> {
+        return ApiService().uploadService.uploadData(key,desc, multipart)
     }
 
     override fun uploadDataToServer(request : VideoDataUpdateRequest): Observable<Response<SignUpResponse>> {
-        return ApiService().service.updateDataToServer(request)
+        return ApiService().uploadService.updateDataToServer(request)
     }
 }

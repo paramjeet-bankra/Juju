@@ -12,10 +12,12 @@ import com.example.videorecordingapplication.data.entity.SignUpResponse
 import com.example.videorecordingapplication.data.entity.request.LoginRequest
 import com.example.videorecordingapplication.data.entity.request.StudentSignUp
 import com.example.videorecordingapplication.data.localdatasource.DataSource
+import com.example.videorecordingapplication.data.localdatasource.UserData
 import com.example.videorecordingapplication.data.repository.RecommendationRepositoryImpl
 import com.example.videorecordingapplication.data.repository.SchoolListRepositoryImpl
 import com.example.videorecordingapplication.data.repository.SignUpRepositoryImpl
 import com.example.videorecordingapplication.presentation.view.recommendation.RecommendationViewModel
+import com.google.gson.annotations.SerializedName
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -52,10 +54,17 @@ class LoginViewModel : ViewModel(){
 
     private fun onResponse(response: LoginResponse) {
         Log.d(DataSource.LOG_TAG, "Login Response successful")
+        UserData.name = response.name
+        UserData.studentId = response.studentId
+        UserData.age = response.age
+        UserData.mentorId = response.mentorId
+        UserData.mentorName = response.mentorName
+        UserData.schoolId = response.schoolId
         updateLoginResponse(response)
     }
 
     fun updateLoginData(loginRequest : LoginRequest){
+        UserData.type = loginRequest.type
         this.loginData = loginRequest
         login()
     }

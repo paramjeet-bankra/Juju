@@ -28,10 +28,10 @@ class VideoPostViewModel : ViewModel(){
     var imageUrl : String?=null
     var localImageUrl : String?=null
 
-    fun uploadData(body : MultipartBody.Part, desc : RequestBody ){
+    fun uploadData(key : String, body : MultipartBody.Part, desc : RequestBody ){
             val compositeDisposable = CompositeDisposable()
             compositeDisposable.add(
-                VideoListRepositoryImpl().uploadData(desc, body)
+                VideoListRepositoryImpl().uploadData(key,desc, body)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io())
                     .subscribe({
