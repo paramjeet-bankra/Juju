@@ -8,41 +8,18 @@
   *
   */
  const { Client } = require('pg')
- 
- function modifyRes(myres){
-     let data = [];
-     
-     myres.forEach(obj => {
-         const findID = data.findIndex(arr => arr.id === obj.category_id);
-        
-         if(findID === -1) {
-             let { category_id, name, imageurl }= obj;
-              delete obj.category_id;
-             delete obj.name;
-             delete obj.imageurl;
-             data.push({
-                 name: name,
-                 id: category_id,
-                 imageurl: imageurl,
-                 videos: [ {...obj} ]
-             })
-         }
-         else {
-             delete obj.category_id;
-             delete obj.name;
-             delete obj.imageurl;
-             data[findID].videos.push(obj)
-         }
-     });
-     return data;
- }
 
 function main(params) {
+    if(params.userID === undefined) {
+        return Promise.reject({ error: 'userID missing'});
+     }
+
+     // db connection
     const client = new Client({
       user: 'xxxx',
       host: 'echo.db.elephantsql.com',
       database: 'xxxx',
-      password: 'xxx-xxxk3Uf4',
+      password: 'xxxx-xxxx',
       port: 5432,
     })
     
@@ -66,8 +43,7 @@ function main(params) {
     .then(res => myres=res)
     .then(() => client.end())
     .then(() => {
-        let res = modifyRes(myres.rows);
-        return {"data" : res} }) 
-    .catch(e => {return {"error": e}})
+        return {"data" : myres.rows} }) 
+    .catch(e => {return {"error": "Something occured"}})
 }
 

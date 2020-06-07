@@ -10,6 +10,7 @@
  const { Client } = require('pg')
   const crypto = require('crypto');
   
+  // password hash using crypto
    function getHashPass(password) {
       const passwordSha1 = crypto
       .createHash('sha1')

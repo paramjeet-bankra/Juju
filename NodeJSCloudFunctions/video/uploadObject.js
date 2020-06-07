@@ -13,7 +13,6 @@
  *   }
  */
 const CloudObjectStorage = require('ibm-cos-sdk');
-const { Client } = require('pg')
 
 async function main(args) {
   const { cos, params } = getParamsCOS(args, CloudObjectStorage);
@@ -44,7 +43,7 @@ if (!params.body || !cos) {
   return {"data" : response};
 }
 
-
+// create object storage to put object
 function getParamsCOS(args, COS) {
   let { body, key } = args;
   if (body.type === 'Buffer') {
@@ -71,7 +70,7 @@ function getParamsCOS(args, COS) {
  
   return { cos, params };
 }
-
+// Generate a random key 
 function getID() {
   return '_' + Math.random().toString(36).substr(2, 9);
 };

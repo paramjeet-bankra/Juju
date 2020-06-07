@@ -9,6 +9,7 @@
   */
  const { Client } = require('pg')
  
+ // modify response according to categories
  function modifyRes(myres){
      let data = [];
      
@@ -38,11 +39,12 @@
  }
 
 function main(params) {
+    // db connection
     const client = new Client({
-      user: 'zaalvgrj',
+      user: 'xxxx',
       host: 'echo.db.elephantsql.com',
-      database: 'zaalvgrj',
-      password: 'bh2MTutGeSKL4f3M_h-l7Sv4gQek3Uf4',
+      database: 'xxxx',
+      password: 'xxxx-xxxxx',
       port: 5432,
     })
     
