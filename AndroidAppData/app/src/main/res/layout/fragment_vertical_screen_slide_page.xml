@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/parent_player"
+    tools:context=".presentation.view.homepage.VerticalScreenSlidePageFragment">
+
+    <com.example.videorecordingapplication.presentation.view.videoplayer.CustomPlayerView
+        android:id="@+id/player_view"
+        android:background="@android:color/white"
+        app:use_controller="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_following"
+        app:layout_constraintLeft_toLeftOf="@+id/player_view"
+        app:layout_constraintRight_toRightOf="@+id/player_view"
+        app:layout_constraintTop_toTopOf="@+id/player_view"
+        android:layout_marginTop="40dp"
+        android:text="Following"
+        android:visibility="gone"
+        android:textSize="24sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_video_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:text="Video description"
+        android:textStyle="bold"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_share"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_share"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_share"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="30dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
