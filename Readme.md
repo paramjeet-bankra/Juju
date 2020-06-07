@@ -60,7 +60,7 @@ Download apk from live demo section, install it on your Android device. Open Juj
 
 ## Project roadmap
 
-![Roadmap](image/User_Journeys.png)
+![Roadmap](image/Roadmap.png)
 
 
 ## The architecture
