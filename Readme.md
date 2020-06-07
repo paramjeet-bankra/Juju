@@ -60,7 +60,7 @@ Download apk from live demo section, install it on your Android device. Open Juj
 
 ## Project roadmap
 
-![Roadmap](image/User_Journeys.png)
+![Roadmap](image/Roadmap.png)
 
 
 ## The architecture
@@ -100,6 +100,7 @@ Download apk from live demo section, install it on your Android device. Open Juj
 * **Sarina Dhamija** - *Initial work* (https://github.com/paramjeet-bankra/Juju)
 * **Chitra Gupta** - *Initial work* (https://github.com/paramjeet-bankra/Juju)
 * **Prachi Shrivastava** - *Initial work* (https://github.com/paramjeet-bankra/Juju)
+* **Swadha Handa** - *Initial work* (https://github.com/paramjeet-bankra/Juju)
 
 ## Acknowledgments
 
