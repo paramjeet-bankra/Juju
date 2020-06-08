@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.videorecordingapplication.data.entity.CategoryData
+import com.example.videorecordingapplication.data.entity.ErrorState
 import com.example.videorecordingapplication.data.localdatasource.DataSource
 import com.example.videorecordingapplication.data.repository.RecommendationRepositoryImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -14,6 +15,7 @@ import io.reactivex.schedulers.Schedulers
 class RecommendationViewModel : ViewModel(){
 
     private val categoryListLiveData = MutableLiveData<List<CategoryData>>()
+    private var errorState = MutableLiveData<ErrorState>(ErrorState(false, ""))
 
     init {
         fetchCategoryList()
@@ -25,6 +27,10 @@ class RecommendationViewModel : ViewModel(){
 
     fun observeCategoryList() : LiveData<List<CategoryData>>{
         return categoryListLiveData
+    }
+
+    fun observeErrorState() : LiveData<ErrorState>{
+        return errorState
     }
 
     private fun fetchCategoryList(){
@@ -45,12 +51,13 @@ class RecommendationViewModel : ViewModel(){
     }
 
         private fun onFailure(t: String?) {
+            errorState.postValue(ErrorState(false, t))
             Log.d(DataSource.LOG_TAG, "Recommendation Response failed $t")
         }
 
         private fun onResponse(response: ArrayList<CategoryData>) {
             Log.d(DataSource.LOG_TAG, "Recommendation Response successful")
-
+            errorState.postValue(ErrorState(true, ""))
             updateCategoryList(response)
         }
 

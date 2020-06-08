@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,6 +8,13 @@
     android:orientation="vertical"
     android:background="@android:color/white"
     tools:context=".presentation.view.signup.UserSignUpActivity">
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
 
     <androidx.appcompat.widget.AppCompatSpinner
         style="@style/Base.Widget.AppCompat.Spinner.Underlined"
@@ -19,8 +26,10 @@
         android:layout_marginTop="20dp" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner_school_name"
         android:layout_marginTop="10dp">
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_signup_name"
@@ -30,8 +39,10 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_age"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/til_name"
         android:layout_marginTop="10dp">
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_signup_age"
@@ -40,27 +51,11 @@
             android:hint="@string/text_hint_signup_age" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!--<com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_school_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_signup_age"
-        android:layout_marginTop="10dp">
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_signup_school_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/text_hint_signup_school_name"
-             />
-
-    </com.google.android.material.textfield.TextInputLayout>-->
-
-
-
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_mentor_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/til_age"
         android:layout_marginTop="10dp">
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_signup_mentor_name"
@@ -71,8 +66,10 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/til_mentor_name"
         android:layout_marginTop="10dp">
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_signup_password"
@@ -90,11 +87,13 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+          android:layout_below="@+id/til_password"
         android:textColor="@android:color/white"
         android:background="@color/colorAccent"
         android:text="@string/text_btn_signup"/>
 
     <LinearLayout
+        android:layout_below="@+id/btn_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -116,4 +115,4 @@
             android:text="@string/text_btn_signup_login"
             android:textColor="@android:color/holo_blue_dark"/>
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

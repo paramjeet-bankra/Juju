@@ -73,7 +73,8 @@
     <string name="text_warn_video_recording_speed">Please record video slowly</string>
     <string name="text_warn_video_recording_light">Please improve lightening condition</string>
     <string name="text_tap_to_Record">Tap to record</string>
-
+    <string name="error_string">HTTP 400 Bad Request</string>
+    <string name="alternate_error_string">Unable to process this request, Please try later</string>
 
     <string name="text_moderator_desc">Please check the followinng videos, \n Videos will be posted after you approval</string>
 

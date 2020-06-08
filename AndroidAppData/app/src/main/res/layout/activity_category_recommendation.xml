@@ -51,19 +51,18 @@
         android:textSize="16sp"
         android:textStyle="bold" />
 
-    <ProgressBar
-        android:id="@+id/progress_recommendation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_centerInParent="true"/>
-
 
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_below="@id/toolbar"
         android:layout_height="match_parent"
-        android:visibility="visible"
+        android:visibility="gone"
         />
+    <ProgressBar
+        android:id="@+id/progress_recommendation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true"/>
 </RelativeLayout>

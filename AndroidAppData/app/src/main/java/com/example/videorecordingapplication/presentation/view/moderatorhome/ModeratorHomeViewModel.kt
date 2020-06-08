@@ -4,10 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.videorecordingapplication.data.entity.CategoryData
-import com.example.videorecordingapplication.data.entity.SignUpResponse
-import com.example.videorecordingapplication.data.entity.VideoEntity
-import com.example.videorecordingapplication.data.entity.VideoListEntity
+import com.example.videorecordingapplication.data.entity.*
 import com.example.videorecordingapplication.data.entity.request.FilterRequest
 import com.example.videorecordingapplication.data.entity.request.ModeratorRequest
 import com.example.videorecordingapplication.data.entity.request.UserVideosRequest
@@ -22,6 +19,7 @@ import io.reactivex.schedulers.Schedulers
 class ModeratorHomeViewModel : ViewModel(){
 
     private val videoListLD = MutableLiveData<List<VideoEntity>>()
+    private var errorState = MutableLiveData<ErrorState>(ErrorState(false, ""))
 
     init {
         fetchVideoList()
@@ -31,6 +29,9 @@ class ModeratorHomeViewModel : ViewModel(){
         this.videoListLD.postValue(list)
     }
 
+    fun observeErrorState() : LiveData<ErrorState>{
+        return errorState
+    }
 
     fun observeVideoList() : LiveData<List<VideoEntity>>{
         return videoListLD
@@ -91,19 +92,15 @@ class ModeratorHomeViewModel : ViewModel(){
     }
 
     private fun onFailure(t: String?) {
-        Log.d(DataSource.LOG_TAG, "Response Failed $t")
+        errorState.postValue(ErrorState(false, t))
     }
 
     private fun onResponse(response: ArrayList<VideoListEntity>) {
-        Log.d(DataSource.LOG_TAG, "Video List for moderator successful")
-
-        //response.filter { it -> "pending" == it.status }
+        errorState.postValue(ErrorState(true, ""))
         updateVideoList(response.get(0).videos)
     }
 
     private fun onResponse(response: SignUpResponse) {
-        Log.d(DataSource.LOG_TAG, "Sign-up Response successful")
-
     }
 
 }

@@ -1,57 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:orientation="vertical"
     android:padding="20dp"
-    android:background="@android:color/white"
     tools:context=".presentation.view.login.UserLogInActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/logo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_signup_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toStartOf="@+id/iv_signup_logo_text"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_logo" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_signup_logo_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_signup_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/iv_signup_logo"
-        app:layout_constraintLeft_toRightOf="@+id/iv_signup_logo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_juju_logo_text_signup" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_signup_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toStartOf="@+id/iv_signup_logo_text"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_logo" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_signup_logo_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_signup_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintLeft_toRightOf="@+id/iv_signup_logo"
+            app:layout_constraintStart_toEndOf="@+id/iv_signup_logo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_juju_logo_text_signup" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_signup_logo"/>
+       android:layout_below="@+id/logo"/>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_login_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:layout_below="@+id/tab_login"
         android:hint="@string/text_hint_signup_name" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -60,6 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="@string/text_hint_signup_password"
+        android:layout_below="@+id/et_login_name"
         android:inputType="textPassword" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -72,9 +76,11 @@
         android:layout_marginRight="10dp"
         android:background="@color/colorAccent"
         android:text="@string/text_btn_login"
+        android:layout_below="@+id/et_login_password"
         android:textColor="@android:color/white" />
 
     <LinearLayout
+        android:layout_below="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -96,4 +102,11 @@
             android:text="@string/text_login_new_user"
             android:textColor="@android:color/holo_blue_dark" />
     </LinearLayout>
-</LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+</RelativeLayout>

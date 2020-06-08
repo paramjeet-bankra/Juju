@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
@@ -27,6 +29,7 @@ class ModeratorHomeActivity : AppCompatActivity(), ModeratorHomeAdapter.DialogSe
     lateinit var rvRecommendation : RecyclerView
     lateinit var fragmentContainer : FrameLayout
     lateinit var toolbar: Toolbar
+    lateinit var progress: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,11 +43,14 @@ class ModeratorHomeActivity : AppCompatActivity(), ModeratorHomeAdapter.DialogSe
         val descritption = findViewById<AppCompatTextView>(R.id.tv_recommendation_description)
         descritption.setText(R.string.text_moderator_desc)
 
+        progress = findViewById(R.id.progress_recommendation)
+        progress.visibility = View.VISIBLE
         fragmentContainer = findViewById(R.id.fragment_container)
-        fragmentContainer.visibility = View.GONE
         rvRecommendation = findViewById<RecyclerView>(R.id.rv_recommendation)
         rvRecommendation.layoutManager = GridLayoutManager(this, 2)
         observeList()
+        observeErrorState()
+
     }
 
     override fun playClicked(videoEntity: VideoEntity) {
@@ -61,6 +67,19 @@ class ModeratorHomeActivity : AppCompatActivity(), ModeratorHomeAdapter.DialogSe
                 recommendationGridAdapter =  ModeratorHomeAdapter(this, this, it as ArrayList<VideoEntity>)
                 rvRecommendation.adapter = recommendationGridAdapter
             }
+        })
+    }
+
+    private fun observeErrorState() {
+        viewModel.observeErrorState().observe(this, Observer {
+            if (!it.status && !it.message.isNullOrBlank()) {
+                if (it.message.equals(getString(R.string.error_string))){
+                    Toast.makeText(this, getString(R.string.alternate_error_string), Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+            progress.visibility = View.GONE
         })
     }
 

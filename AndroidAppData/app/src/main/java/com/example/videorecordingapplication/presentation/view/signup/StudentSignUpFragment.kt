@@ -27,7 +27,6 @@ class StudentSignUpFragment : Fragment() {
 
     var schoolList : ArrayList<SchoolEntity>? = null
 
-    lateinit var etSchoolName : AppCompatEditText
     lateinit var etName : AppCompatEditText
     lateinit var etAge : AppCompatEditText
     lateinit var etMentorName : AppCompatEditText
@@ -35,6 +34,7 @@ class StudentSignUpFragment : Fragment() {
     lateinit var btnSignUp : AppCompatButton
     lateinit var tvLogIn : AppCompatTextView
     lateinit var spinner: Spinner
+    lateinit var progress: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +66,7 @@ class StudentSignUpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //etSchoolName = view.findViewById(R.id.et_signup_school_name)
+        progress = view.findViewById(R.id.progress)
         etAge = view.findViewById(R.id.et_signup_age)
         etName = view.findViewById(R.id.et_signup_name)
         etMentorName = view.findViewById(R.id.et_signup_mentor_name)
@@ -87,6 +87,7 @@ class StudentSignUpFragment : Fragment() {
         initializeListener()
         observeList()
         observeSignUpResponse()
+        observeErrorState()
     }
 
     private fun initializeListener(){
@@ -97,7 +98,7 @@ class StudentSignUpFragment : Fragment() {
                 Toast.makeText(requireContext(), "Please fill all mandatory feilds", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
+            progress.visibility = View.VISIBLE
             viewModel.updateSignUpData(StudentSignUp(
                 etAge.text.toString().toInt(), 4, etName.text.toString(),
                 1, etPassword.text.toString()))
@@ -121,5 +122,19 @@ class StudentSignUpFragment : Fragment() {
 
     private fun setupViewModel() {
         viewModel = ViewModelProviders.of(this).get(StudentSignUpViewModel::class.java)
+    }
+
+    private fun observeErrorState() {
+        viewModel.observeErrorState().observe(requireActivity(), Observer {
+            if (!it.status && !it.message.isNullOrBlank()) {
+                if (it.message.equals(getString(R.string.error_string))){
+                    Toast.makeText(requireContext(), getString(R.string.alternate_error_string), Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(requireContext()
+                        , it.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+            progress.visibility = View.GONE
+        })
     }
 }

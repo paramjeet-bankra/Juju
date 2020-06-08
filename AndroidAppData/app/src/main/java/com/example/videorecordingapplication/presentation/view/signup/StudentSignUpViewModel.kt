@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.example.videorecordingapplication.data.entity.CategoryData
+import com.example.videorecordingapplication.data.entity.ErrorState
 import com.example.videorecordingapplication.data.entity.SchoolEntity
 import com.example.videorecordingapplication.data.entity.SignUpResponse
 import com.example.videorecordingapplication.data.entity.request.StudentSignUp
@@ -23,7 +24,7 @@ class StudentSignUpViewModel : ViewModel() {
     private val schoolLiveData = MutableLiveData<List<SchoolEntity>>()
     private var signUpData: StudentSignUp? = null
     private val signUpResponseLD = MutableLiveData<SignUpResponse>()
-
+    private var errorState = MutableLiveData<ErrorState>(ErrorState(false, ""))
 
     init {
         fetchSchoolList()
@@ -43,6 +44,10 @@ class StudentSignUpViewModel : ViewModel() {
 
     fun observeSignUpResponse(): LiveData<SignUpResponse> {
         return signUpResponseLD
+    }
+
+    fun observeErrorState() : LiveData<ErrorState>{
+        return errorState
     }
 
     private fun fetchSchoolList() {
@@ -84,7 +89,7 @@ class StudentSignUpViewModel : ViewModel() {
 
     private fun onResponse(response: SignUpResponse) {
         Log.d(DataSource.LOG_TAG, "student Signup Response successful")
-
+        errorState.postValue(ErrorState(true, ""))
         updateStudentResponse(response)
     }
 
@@ -94,6 +99,7 @@ class StudentSignUpViewModel : ViewModel() {
     }
 
     private fun onFailure(errorMessage: String?) {
+        errorState.postValue(ErrorState(false, errorMessage))
         Log.d(DataSource.LOG_TAG, "student Response failed $errorMessage")
     }
 

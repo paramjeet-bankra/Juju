@@ -5,10 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
-import com.example.videorecordingapplication.data.entity.CategoryData
-import com.example.videorecordingapplication.data.entity.LoginResponse
-import com.example.videorecordingapplication.data.entity.SchoolEntity
-import com.example.videorecordingapplication.data.entity.SignUpResponse
+import com.example.videorecordingapplication.data.entity.*
 import com.example.videorecordingapplication.data.entity.request.LoginRequest
 import com.example.videorecordingapplication.data.entity.request.StudentSignUp
 import com.example.videorecordingapplication.data.localdatasource.DataSource
@@ -21,10 +18,12 @@ import com.google.gson.annotations.SerializedName
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import java.security.MessageDigest
 
 class LoginViewModel : ViewModel(){
 
     private var loginData : LoginRequest? = null
+    private var errorState = MutableLiveData<ErrorState>(ErrorState(false, ""))
     private val loginResponseLD = MutableLiveData<LoginResponse>()
 
     fun observeLoginResponse() : LiveData<LoginResponse>{
@@ -32,7 +31,12 @@ class LoginViewModel : ViewModel(){
     }
 
     fun updateLoginResponse(loginResponse: LoginResponse?){
+       errorState.postValue(ErrorState(true, ""))
         this.loginResponseLD.postValue(loginResponse)
+    }
+
+    fun observeErrorState() : LiveData<ErrorState>{
+        return errorState
     }
 
     fun login(){
@@ -70,6 +74,8 @@ class LoginViewModel : ViewModel(){
     }
 
     private fun onFailure(t: String?) {
+        errorState.postValue(ErrorState(false, t))
         Log.d(DataSource.LOG_TAG, "Response failed $t")
     }
 }
+

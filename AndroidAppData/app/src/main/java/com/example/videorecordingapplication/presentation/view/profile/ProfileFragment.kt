@@ -23,7 +23,6 @@ import com.example.videorecordingapplication.presentation.view.search.Horizontal
 import com.example.videorecordingapplication.presentation.view.search.SearchViewModel
 
 class ProfileFragment : Fragment() {
-    lateinit var videoList : ArrayList<SampleVideoData>
     private lateinit var recommendationGridAdapter: HorizontalListAdapter
     private lateinit var progress : ProgressBar
     private lateinit var viewModel : ProfileViewModel

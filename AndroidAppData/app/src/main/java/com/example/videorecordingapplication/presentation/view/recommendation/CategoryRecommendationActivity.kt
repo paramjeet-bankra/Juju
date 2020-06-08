@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.videorecordingapplication.R
 import com.example.videorecordingapplication.data.entity.CategoryData
 import com.example.videorecordingapplication.presentation.view.bottomnavigation.BottomNavigationActivity
+import kotlinx.android.synthetic.main.activity_category_recommendation.*
 
 
 class CategoryRecommendationActivity : AppCompatActivity(), RecommendationGridAdapter.CheckSelectLListener {
@@ -23,6 +24,7 @@ class CategoryRecommendationActivity : AppCompatActivity(), RecommendationGridAd
     private lateinit var recommendationGridAdapter: RecommendationGridAdapter
     private lateinit var btnDone : AppCompatButton
     private lateinit var progress : ProgressBar
+    private lateinit var rvRecommendation : RecyclerView
     private val selectedCatList = ArrayList<CategoryData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,23 +38,40 @@ class CategoryRecommendationActivity : AppCompatActivity(), RecommendationGridAd
         initListener()
         setupViewModel()
         observeList()
+        observeErrorState()
     }
 
     private fun observeList(){
         viewModel.observeCategoryList().observe(this, Observer {
-            progress.visibility = View.GONE
             recommendationGridAdapter.setList(it as ArrayList<CategoryData>)
+        })
+    }
+
+    private fun observeErrorState() {
+        viewModel.observeErrorState().observe(this, Observer {
+            if (!it.status && !it.message.isNullOrBlank()) {
+                if (it.message.equals(getString(R.string.error_string))){
+                    Toast.makeText(this, getString(R.string.alternate_error_string), Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+            progress.visibility = View.GONE
+            rvRecommendation.visibility = View.VISIBLE
         })
     }
 
     private fun setupUI(){
         val descritption = findViewById<AppCompatTextView>(R.id.tv_recommendation_description)
         progress = findViewById(R.id.progress_recommendation)
-        progress.visibility = View.VISIBLE
+
         recommendationGridAdapter =  RecommendationGridAdapter(this, this)
-        val rvRecommendation = findViewById<RecyclerView>(R.id.rv_recommendation)
+        rvRecommendation = findViewById<RecyclerView>(R.id.rv_recommendation)
         rvRecommendation.layoutManager = GridLayoutManager(this, 2)
         rvRecommendation.adapter = recommendationGridAdapter
+
+        progress.visibility = View.VISIBLE
+        rvRecommendation.visibility = View.GONE
 
         btnDone = findViewById(R.id.btn_recommendation_done)
     }
